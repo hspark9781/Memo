@@ -11,7 +11,7 @@
   		INSERT INTO
   			`user`
   		(
-  			`loginId`
+  			`loginid`
   			, `password`
   			, `name`
   			, `email`
@@ -29,6 +29,25 @@
 		)  		
   		
   	</insert>
+  	
+  	
+  	<select id="selectUser" parameterType="map" resultType="com.hsp.memo.user.dao.UserDAO">
+  		SELECT
+  			`id`
+  			, `loginid`
+  			, `password`
+  			, `name`
+  			, `email`
+  			, `createdAt`
+  			, `updatedAt`
+  		FROM
+  			`user`
+  		WHERE
+  			`loginid` = #{loginId}
+  			AND `password` = #{password}
+  	
+  	
+  	</select>
   
   
   </mapper>

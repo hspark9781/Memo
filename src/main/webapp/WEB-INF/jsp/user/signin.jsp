@@ -23,13 +23,55 @@
 			<h1 class="text-center pt-3">로그인</h1>
 			<input type="text" id="loginIdInput" placeholder="로그인 ID" class="form-control mt-4">
 			<input type="password" id="passwordInput" placeholder="비밀번호" class="form-control mt-3">
-			<button type="button" id="signin" class="btn btn-info btn-block mt-3">로그인</button>
+			<button type="button" id="loginBtn" class="btn btn-info btn-block mt-3">로그인</button>
+			<div class="text-center pt-3">
+				<a href="/user/signup/view">회원가입</a>
+			</div>
 		</div>
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	
 	
 	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$("#loginBtn").on("click", function() {
+				let loginId = $("#loginIdInput").val();
+				let password = $("#passwordInput").val();
+				
+				if(loginId == "") {
+					alert("아이디를 입력하세요");
+					return;
+				}
+				
+				if(password == "") {
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/signin"
+					, data:{"loginId":loginId, "password":password}
+					, success:function(data) {
+						if(data.result == "success") {
+							alert("로그인 성공");
+						} else {
+							alert("아이디와 비밀번호를 확인해 주세요.")
+						}
+					}
+					, error:function() {
+						alert("로그인 에러");
+					}
+					
+				});
+				
+				
+				
+			});
+		});
+	</script>
 
 </body>
 </html>
