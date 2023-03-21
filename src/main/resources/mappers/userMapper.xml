@@ -31,7 +31,7 @@
   	</insert>
   	
   	
-  	<select id="selectUser" parameterType="map" resultType="com.hsp.memo.user.dao.UserDAO">
+  	<select id="selectUser" parameterType="map" resultType="com.hsp.memo.user.model.User">
   		SELECT
   			`id`
   			, `loginid`
