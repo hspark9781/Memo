@@ -27,7 +27,7 @@
 				<div class="d-flex justify-content-center mt-3">
 					<textarea rows="10" cols="200" placeholder="내용을 입력해 주세요" class="form-control" id="contentInput"></textarea>
 				</div>
-					<input type=file class="col-2  mt-3" id="fileInput">
+					<input type=file class="mt-3" id="fileInput">
 				<div class="d-flex justify-content-between">
 					<a href="/post/list/view" class="btn btn-secondary col-2 mt-3">목록으로</a>
 					<button type="button" id="saveBtn" class="btn btn-secondary col-2 mt-3">저장</button>

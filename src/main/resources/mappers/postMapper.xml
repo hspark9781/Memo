@@ -54,7 +54,8 @@
 			, `updatedAt`
 		FROM
 			`post`
-		WHERE `id` = #{id}	
+		WHERE 
+			`id` = #{id}	
 	</select>
 		
 

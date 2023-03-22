@@ -24,7 +24,7 @@ public class PostRestController {
 	
 	@PostMapping("/create")
 	public Map<String, String> postCreate(
-			 @RequestParam("title") String title
+			@RequestParam("title") String title
 			, @RequestParam("content") String content
 			, @RequestParam("file") MultipartFile file
 			, HttpSession session) {
@@ -34,7 +34,6 @@ public class PostRestController {
 		int count = postBO.addPost(userId, title, content, file);
 		
 		Map<String, String> resultMap = new HashMap<>();
-		
 		if(count == 1) {
 			resultMap.put("result", "success");
 		} else {
@@ -42,7 +41,6 @@ public class PostRestController {
 		}
 		
 		return resultMap;
-		
 		
 	}
 	
