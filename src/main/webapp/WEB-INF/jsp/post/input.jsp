@@ -25,12 +25,12 @@
 					<h5 class="pt-2 font-weight-bold">제목 : </h5> <input type="text" class="form-control col-10 ml-5" id="titleInput">
 				</div>
 				<div class="d-flex justify-content-center mt-3">
-					<textarea rows="10" cols="200" placeholder="내용을 입력해 주세요" class="form-control"></textarea>
+					<textarea rows="10" cols="200" placeholder="내용을 입력해 주세요" class="form-control" id="contentInput"></textarea>
 				</div>
-					<button type="button" class="btn btn-secondary col-2  mt-3">파일첨부</button>
+					<input type=file class="col-2  mt-3" id="fileInput">
 				<div class="d-flex justify-content-between">
-					<a href="#" class="btn btn-secondary col-2 mt-3">목록으로</a>
-					<button type="button" class="btn btn-secondary col-2 mt-3">저장</button>
+					<a href="/post/list/view" class="btn btn-secondary col-2 mt-3">목록으로</a>
+					<button type="button" id="saveBtn" class="btn btn-secondary col-2 mt-3">저장</button>
 				</div>
 			</div>
 		</div>
@@ -39,6 +39,49 @@
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	
 </div>
+	<script>
+		$(document).ready(function() {
+			$("#saveBtn").on("click", function() {
+				let title = $("#titleInput").val();
+				let content = $("#contentInput").val();
+				let file = $("#fileInput")[0];
+				
+				if(title == "") {
+					alert("제목을 입력해 주세요");
+					return;
+				}
+				
+				if(content.trim() == "") {
+					alert("내용을 입력하세요");
+					return;
+				}
+				
+				var formData = new FormData();
+				formData.append("title", title);
+				formData.append("content", content);
+				formData.append("file", file.files[0]);
+				
+				$.ajax({
+					type:"post"
+					, url:"/post/create"
+					, data:formData
+					, enctype:"multipart/form-data" // 파일 업로드 필수
+					, processData:false // 파일 업로드 필수
+					, contentType:false // 파일 업로드 필수
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href = "/post/list/view";
+						} else {
+							alert("글쓰기 실패");
+						}
+					}
+					, error:function() {
+						alert("게시물 저장 에러");
+					}
+				});
+			});
+		});
+	</script>
 	
 
 </body>

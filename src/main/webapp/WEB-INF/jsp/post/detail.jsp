@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메모-메모보기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
@@ -16,38 +15,38 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap">
+<div id="wrap">
 	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-	<section class="contents">
-		<h1 class="text-center">메모 리스트</h1>
-		<table class="table text-center">
-			<thead class="bg-secondary">
-				<tr class="bg-light">
-					<th>No.</th>
-					<th>제목</th>
-					<th>시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="post" items="${postList }">
-				<tr>
-					<td>${post.id }</td>
-					<td> <a href="/post/detail/view?id=${post.id }">${post.title }</a> </td>
-					<td><fmt:formatDate value="${post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<div class="d-flex justify-content-between mt-5">
-		    <div></div>	
-			<a href=/post/input/view class="btn btn-primary">글쓰기</a>
+	<section class="contents d-flex justify-content-center">
+		<div class="input-box">
+			<h1 class="text-center">메모 보기</h1>
+			<div>
+				<div class="d-flex justify-content-center mt-3">
+					<h5 class="pt-2 font-weight-bold">제목 : </h5> <input type="text" class="form-control col-10 ml-5" id="titleInput" value="${post.title }">
+				</div>
+				<div class="d-flex justify-content-center mt-3">
+					<textarea rows="10" cols="200" placeholder="내용을 입력해 주세요" class="form-control" id="contentInput">${post.content }</textarea>
+				</div>
+				<img src="${post.imagePath }">
+				<div class="d-flex justify-content-between mt-3">
+					<div>
+						<a href="/post/list/view" class="btn btn-secondary">목록으로</a>
+						<button type="button" class="btn btn-danger">삭제</button>
+					</div>
+					<button type="button" id="modifyBtn" class="btn btn-secondary col-2">수정</button>
+				</div>
+			</div>
 		</div>
+
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	
+</div>
+	<script>
 	
-	</div>
+	</script>
+	
 
 </body>
 </html>
-			
+		
