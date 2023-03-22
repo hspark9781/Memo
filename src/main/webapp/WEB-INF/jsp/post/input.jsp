@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메모-메모입력</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
@@ -15,41 +15,32 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap">
+<div id="wrap">
 	<c:import url="/WEB-INF/jsp/include/header.jsp"/>
-	<section class="contents">
-		<h1 class="text-center">메모 리스트</h1>
-		<table class="table text-center">
-			<thead class="bg-secondary">
-				<tr>
-					<th>No.</th>
-					<th>제목</th>
-					<th>시간</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>4</td>
-					<td>중요한 메모</td>
-					<td>2025-01-04 12:00:00</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>적당한 메모</td>
-					<td>2025-01-02 08:40:00</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="d-flex justify-content-between mt-5">
-		    <div></div>	
-			<button type="button" class="btn btn-primary">글쓰기</button>
+	<section class="contents d-flex justify-content-center">
+		<div class="input-box">
+			<h1 class="text-center">메모 입력</h1>
+			<div>
+				<div class="d-flex justify-content-center mt-3">
+					<h5 class="pt-2 font-weight-bold">제목 : </h5> <input type="text" class="form-control col-10 ml-5" id="titleInput">
+				</div>
+				<div class="d-flex justify-content-center mt-3">
+					<textarea rows="10" cols="200" placeholder="내용을 입력해 주세요" class="form-control"></textarea>
+				</div>
+					<button type="button" class="btn btn-secondary col-2  mt-3">파일첨부</button>
+				<div class="d-flex justify-content-between">
+					<a href="#" class="btn btn-secondary col-2 mt-3">목록으로</a>
+					<button type="button" class="btn btn-secondary col-2 mt-3">저장</button>
+				</div>
+			</div>
 		</div>
+
 	</section>
 	<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	
+</div>
 	
-	</div>
 
 </body>
 </html>
-			
+		

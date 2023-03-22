@@ -10,7 +10,9 @@ header {
 	background-color:#dddddd;
 }
 
-
+.contents > .input-box {
+	width:600px;
+}
 
 .contents > .join-box {
 	width:350px;

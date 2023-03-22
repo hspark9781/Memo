@@ -14,5 +14,9 @@ public class PostController {
 		return "post/list";
 	}
 	
+	@GetMapping("/input/view")
+	public String memoInput() {
+		return "post/input";
+	}
 
 }
