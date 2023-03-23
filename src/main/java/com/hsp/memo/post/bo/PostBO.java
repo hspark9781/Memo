@@ -18,7 +18,7 @@ public class PostBO {
 	
 	public int addPost(int userId, String title, String content, MultipartFile file) {
 		// 파일 저장 -> 파일 경로 생성 -> DB에 저장
-		String imagePath = FileManagerService.saveFile(userId, file);
+		String imagePath = FileManagerService.saveFile(userId, file); // file이 없으면 null
 		return postDAO.insertPost(userId, title, content, imagePath);
 	}
 	
